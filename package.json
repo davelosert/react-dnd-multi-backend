@@ -16,18 +16,13 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rm -rf lib",
-    "build:lib": "babel src/lib --out-dir lib --ignore _spec.js",
-    "build:dist": "webpack",
-    "build:examples": "webpack --config webpack/examples.js && webpack --config webpack/examples_dist.js",
-    "build": "npm run build:lib && npm run build:dist",
     "lint": "eslint .",
     "test": "NODE_ENV=test NODE_PATH=$NODE_PATH:$PWD/src nyc mocha --opts ./.mocha.opts",
     "test:watch": "watch-run -i -p 'src/lib/**/*' npm run test",
     "travis-test": "NODE_ENV=test NODE_PATH=$NODE_PATH:$PWD/src nyc --reporter=lcov mocha --opts ./.mocha.opts",
     "travis-coverage": "cat ./coverage/lcov.info | coveralls",
     "start": "webpack-dev-server --config webpack/dev.js",
-    "prepush": "npm run lint && npm run test && npm run build:dist && npm run build:examples",
-    "prepare": "npm run clean && npm run lint && npm run test && npm run build:lib"
+    "prepush": "npm run lint && npm run test && npm run build:dist && npm run build:examples"
   },
   "repository": {
     "type": "git",
